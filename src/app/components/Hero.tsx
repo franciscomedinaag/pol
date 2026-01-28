@@ -42,7 +42,7 @@ export function Hero() {
 
           {/* Subtitle */}
           <p className="text-lg md:text-2xl max-w-2xl mb-12 text-white font-bold leading-relaxed drop-shadow-lg">
-            La energía del glam rock mexicano
+            LA ENERGÍA DEL GLAM ROCK MEXICANO
           </p>
 
           {/* CTA Buttons */}
