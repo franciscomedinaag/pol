@@ -1,4 +1,4 @@
-import { Mail, Instagram, Facebook, Twitter, Send } from 'lucide-react';
+import { Mail, Instagram, Facebook, Send, PhoneCallIcon } from 'lucide-react';
 import { useState } from 'react';
 
 export function Contact() {
@@ -8,18 +8,11 @@ export function Contact() {
     message: '',
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Mock form submission
-    alert('¡Gracias por tu mensaje! Me pondré en contacto contigo pronto.');
-    setFormData({ name: '', email: '', message: '' });
-  };
-
   const socialLinks = [
-    { icon: Instagram, name: 'Instagram', handle: '@polgaynor', color: 'pink' },
-    { icon: Facebook, name: 'Facebook', handle: 'Pöl Gaynor', color: 'blue' },
-    { icon: Twitter, name: 'Twitter', handle: '@polgaynor', color: 'pink' },
-    { icon: Mail, name: 'Email', handle: 'contact@polgaynor.com', color: 'blue' },
+    { icon: Instagram, name: 'Instagram', handle: '@polgaynor', color: 'pink', url: 'https://www.instagram.com/polgaynor' },
+    { icon: Facebook, name: 'Facebook', handle: 'Pöl Gaynor', color: 'blue', url: 'https://www.facebook.com/polgaynor' },
+    { icon: Mail, name: 'Email', handle: 'polgaynor@gmail.com', color: 'pink', url: 'mailto:polgaynor@gmail.com' },
+    { icon: PhoneCallIcon, name: 'Teléfono', handle: '+52 1 612 158 7255', color: 'blue', url: 'tel:+5216121587255' },
   ];
 
   return (
@@ -28,9 +21,9 @@ export function Contact() {
       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent"></div>
 
       <div className="container mx-auto px-6">
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="grid gap-12 text-center">
           {/* Left Side - Contact Info */}
-          <div>
+          <div className="max-w-[600px] mx-auto">
             <span className="inline-block text-sm tracking-[0.3em] uppercase text-cyan-400 mb-4 font-bold">
               Contacto
             </span>
@@ -49,8 +42,11 @@ export function Contact() {
                 const Icon = social.icon;
                 const isPink = social.color === 'pink';
                 return (
-                  <button
+                  <a
                     key={index}
+                    href={social.url}
+                    target={social.url && !social.url.startsWith('mailto:') ? '_blank' : undefined}
+                    rel={social.url && !social.url.startsWith('mailto:') ? 'noopener noreferrer' : undefined}
                     className={`group w-full flex items-center gap-4 p-4 bg-zinc-900 border-4 border-zinc-800 hover:border-${social.color}-500 transition-all duration-300 shadow-[0_0_20px_rgba(0,0,0,0.5)]`}
                     style={{
                       ['--hover-border' as any]: isPink ? '#ec4899' : '#06b6d4'
@@ -77,69 +73,12 @@ export function Contact() {
                         {social.handle}
                       </div>
                     </div>
-                  </button>
+                  </a>
                 );
               })}
             </div>
           </div>
 
-          {/* Right Side - Contact Form */}
-          <div>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label htmlFor="name" className="block text-sm uppercase tracking-wider text-pink-400 mb-2 font-bold">
-                  Nombre
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  required
-                  className="w-full px-4 py-3 bg-zinc-900 border-2 border-zinc-800 text-white focus:border-pink-500 focus:outline-none transition-colors"
-                  placeholder="Tu nombre"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="email" className="block text-sm uppercase tracking-wider text-cyan-400 mb-2 font-bold">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  required
-                  className="w-full px-4 py-3 bg-zinc-900 border-2 border-zinc-800 text-white focus:border-cyan-400 focus:outline-none transition-colors"
-                  placeholder="tu@email.com"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="message" className="block text-sm uppercase tracking-wider text-pink-400 mb-2 font-bold">
-                  Mensaje
-                </label>
-                <textarea
-                  id="message"
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  required
-                  rows={6}
-                  className="w-full px-4 py-3 bg-zinc-900 border-2 border-zinc-800 text-white focus:border-pink-500 focus:outline-none transition-colors resize-none"
-                  placeholder="Cuéntame más..."
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="group w-full px-8 py-4 bg-gradient-to-r from-pink-600 to-cyan-500 hover:from-pink-500 hover:to-cyan-400 transition-all duration-300 uppercase tracking-widest flex items-center justify-center gap-2 font-black shadow-[0_0_30px_rgba(236,72,153,0.4)] hover:shadow-[0_0_40px_rgba(236,72,153,0.6)]"
-              >
-                <span>Enviar Mensaje</span>
-                <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </button>
-            </form>
-          </div>
         </div>
       </div>
     </section>

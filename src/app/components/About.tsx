@@ -1,5 +1,5 @@
 import { ImageWithFallback } from '@/app/components/figma/ImageWithFallback';
-import grupo3 from '../../assets/380e6e817931465447714ece5cca3d28d5a6c4e6.png';
+import grupo1 from '../../assets/image_6.jpeg';
 
 export function About() {
   return (
@@ -14,7 +14,7 @@ export function About() {
             <div className="absolute -inset-4 bg-gradient-to-br from-cyan-600/30 to-pink-600/30 blur-3xl"></div>
             <div className="relative aspect-[4/3] overflow-hidden border-4 border-pink-500 shadow-[0_0_50px_rgba(236,72,153,0.5)]">
               <img
-                src={grupo3}
+                src={grupo1}
                 alt="Pöl Gaynor y su grupo en vivo"
                 className="w-full h-full object-cover"
               />

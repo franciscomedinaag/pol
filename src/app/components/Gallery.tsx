@@ -1,34 +1,59 @@
 import { ImageWithFallback } from '@/app/components/figma/ImageWithFallback';
 import { useState } from 'react';
-import grupo1 from '../../assets/10696ae20e722a1f824a4944d9a0b2a0eecb9e78.png';
-import grupo2 from '../../assets/631557d619e32e8dd15fe1a3dbb05187ae149664.png';
-import grupo3 from '../../assets/380e6e817931465447714ece5cca3d28d5a6c4e6.png';
-import flyer from '../../assets/20c8718ca2d1a92f1e6ac3b048c3b2a7421e7361.png';
+
+import image1 from '../../assets/image_1.jpeg';
+import image2 from '../../assets/image_2.jpeg';
+import image3 from '../../assets/image_3.jpeg';
+import image4 from '../../assets/image_4.jpeg';
+import image5 from '../../assets/image_5.jpeg';
+import image6 from '../../assets/image_6.jpeg';
+import image7 from '../../assets/image_7.jpeg';
+import image8 from '../../assets/image_8.jpeg';
 
 export function Gallery() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
   const images = [
     {
-      src: flyer,
-      alt: 'Flyer promocional de Pöl Gaynor',
-      title: 'Promo Oficial',
+      src: image1,
+      alt: 'Pöl Gaynor',
+      title: 'Pöl Gaynor',
     },
     {
-      src: grupo1,
-      alt: 'Pöl Gaynor en vivo con su banda',
-      title: 'En Vivo',
+      src: image2,
+      alt: 'Pöl Gaynor',
+      title: 'Pöl Gaynor',
     },
     {
-      src: grupo2,
-      alt: 'Pöl Gaynor en la playa',
-      title: 'Sesión Playa',
+      src: image3,
+      alt: 'Pöl Gaynor',
+      title: 'Pöl Gaynor',
     },
     {
-      src: grupo3,
-      alt: 'Pöl Gaynor performance nocturna',
-      title: 'Show Nocturno',
+      src: image4,
+      alt: 'Pöl Gaynor',
+      title: 'Pöl Gaynor',
     },
+    {
+      src: image5,
+      alt: 'Pöl Gaynor',
+      title: 'Pöl Gaynor',
+    },
+    {
+      src: image6,
+      alt: 'Pöl Gaynor',
+      title: 'Pöl Gaynor',
+    },
+    {
+      src: image7,
+      alt: 'Pöl Gaynor',
+      title: 'Pöl Gaynor',
+    },
+    {
+      src: image8,
+      alt: 'Pöl Gaynor',
+      title: 'Pöl Gaynor',
+    }
   ];
 
   return (

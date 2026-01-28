@@ -1,35 +1,40 @@
-import { Music as MusicIcon, Play, ExternalLink } from 'lucide-react';
+import { Play, ExternalLink } from 'lucide-react';
+import cover1 from '../../assets/cancion_1.PNG';
+import cover2 from '../../assets/cancion_2.PNG';
+import cover3 from '../../assets/cancion_3.PNG';
 
 export function Music() {
   const releases = [
     {
-      title: 'Neón y Terciopelo',
-      type: 'Álbum',
-      year: '2024',
-      description: 'Una explosión de color sonoro que fusiona el glam clásico con beats contemporáneos.',
-      color: 'from-pink-600 to-pink-400',
-    },
-    {
-      title: 'Luces de la Ciudad',
-      type: 'EP',
-      year: '2023',
-      description: 'Cinco canciones que capturan la esencia de las noches urbanas llenas de energía.',
-      color: 'from-cyan-600 to-cyan-400',
-    },
-    {
-      title: 'Brillar',
+      title: 'Señorita Tentación',
       type: 'Single',
-      year: '2023',
-      description: 'El himno de autoaceptación y celebración que definió una generación.',
+      year: '2022',
+      color: 'from-pink-600 to-pink-400',
+      url: 'https://www.youtube.com/watch?v=REjDb0g7Fys',
+      image: cover1,
+    },
+    {
+      title: `Life's a Beach`,
+      type: 'Single',
+      year: '2025',
+      color: 'from-cyan-600 to-cyan-400',
+      url: 'https://www.youtube.com/watch?v=u8ih5g7cNvY',
+      image: cover2
+    },
+    {
+      title: 'The Way',
+      type: 'Single',
+      year: '2021',
       color: 'from-pink-600 to-cyan-600',
+      url: 'https://www.youtube.com/watch?v=moXIkcowfp4',
+      image: cover3,
     },
   ];
 
   const platforms = [
-    { name: 'Spotify', icon: '🎵' },
-    { name: 'Apple Music', icon: '🍎' },
-    { name: 'YouTube', icon: '▶️' },
-    { name: 'SoundCloud', icon: '☁️' },
+    { name: 'Spotify', icon: '🎵', url: 'https://open.spotify.com/intl-es/artist/1aP2neFeDsxfhkirx0IWQd?si=pn0AuFLTToizpYkx_2rUDA' },
+    { name: 'Apple Music', icon: '🍎', url: 'https://music.apple.com/us/artist/p%C3%B6l-gaynor/1488459265' },
+    { name: 'YouTube', icon: '▶️', url: 'https://www.youtube.com/@polgaynor7626' },
   ];
 
   return (
@@ -54,17 +59,21 @@ export function Music() {
         {/* Releases Grid */}
         <div className="grid md:grid-cols-3 gap-8 mb-16">
           {releases.map((release, index) => (
-            <div
+            <a
               key={index}
-              className="group relative bg-zinc-900 border-4 border-zinc-800 overflow-hidden hover:border-pink-500 transition-all duration-300 shadow-[0_0_30px_rgba(0,0,0,0.5)] hover:shadow-[0_0_40px_rgba(236,72,153,0.4)]"
+              href={release.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Abrir ${release.title} en nueva pestaña`}
+              className="group block relative bg-zinc-900 border-4 border-zinc-800 overflow-hidden hover:border-pink-500 transition-all duration-300 shadow-[0_0_30px_rgba(0,0,0,0.5)] hover:shadow-[0_0_40px_rgba(236,72,153,0.4)]"
             >
               {/* Gradient Background */}
               <div className={`absolute inset-0 bg-gradient-to-br ${release.color} opacity-0 group-hover:opacity-20 transition-opacity duration-300`}></div>
               
               <div className="relative p-8">
-                {/* Icon */}
-                <div className="w-16 h-16 mb-6 flex items-center justify-center bg-gradient-to-br from-cyan-500/20 to-pink-500/20 border-2 border-pink-500">
-                  <MusicIcon className="w-8 h-8 text-pink-400" />
+                {/* Cover Image */}
+                <div className="w-16 h-16 mb-6 flex items-center justify-center bg-gradient-to-br from-cyan-500/20 to-pink-500/20 border-2 border-pink-500 overflow-hidden rounded">
+                  <img src={release.image} alt={release.title} className="w-12 h-12 object-cover rounded" />
                 </div>
 
                 {/* Type & Year */}
@@ -79,19 +88,21 @@ export function Music() {
                   {release.title}
                 </h3>
 
-                {/* Description */}
-                <p className="text-gray-400 mb-6 leading-relaxed">
-                  {release.description}
-                </p>
-
-                {/* Play Button */}
-                <button className="flex items-center gap-2 text-pink-400 hover:text-cyan-400 transition-colors uppercase tracking-wider text-sm font-bold group/btn">
-                  <Play className="w-4 h-4" />
-                  <span>Escuchar</span>
-                  <ExternalLink className="w-4 h-4 opacity-0 group-hover/btn:opacity-100 transition-opacity" />
-                </button>
+                {/* Play + External Link */}
+                <div className="flex items-center gap-2 text-pink-400 hover:text-cyan-400 transition-colors uppercase tracking-wider text-sm font-bold group">
+                  <button
+                    className="flex items-center gap-2"
+                    aria-label={`Reproducir ${release.title}`}
+                  >
+                    <Play className="w-4 h-4" />
+                    <span>Escuchar</span>
+                  </button>
+                  <span className="w-4 h-4 ml-2 text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden>
+                    <ExternalLink className="w-4 h-4" />
+                  </span>
+                </div>
               </div>
-            </div>
+            </a>
           ))}
         </div>
 
@@ -102,15 +113,19 @@ export function Music() {
           </h3>
           <div className="flex flex-wrap justify-center gap-4">
             {platforms.map((platform, index) => (
-              <button
+              <a
                 key={index}
+                href={platform.url}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group px-8 py-4 bg-zinc-900 border-4 border-zinc-800 hover:border-cyan-400 transition-all duration-300 flex items-center gap-3 shadow-[0_0_20px_rgba(0,0,0,0.5)] hover:shadow-[0_0_30px_rgba(0,255,255,0.3)]"
               >
                 <span className="text-2xl">{platform.icon}</span>
                 <span className="text-white group-hover:text-cyan-400 transition-colors uppercase tracking-wider font-bold">
                   {platform.name}
                 </span>
-              </button>
+                <ExternalLink className="w-4 h-4 ml-2 text-gray-400 opacity-80 group-hover:text-cyan-400 transition-colors" />
+              </a>
             ))}
           </div>
         </div>

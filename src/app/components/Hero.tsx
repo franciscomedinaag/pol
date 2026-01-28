@@ -2,6 +2,7 @@ import { ImageWithFallback } from '@/app/components/figma/ImageWithFallback';
 import logoGaynor from '../../assets/LOGOGAYNOR.png';
 
 export function Hero() {
+  const merchUrl = 'https://cipdhn-f7.myshopify.com';
   return (
     <section
       id="hero"
@@ -66,6 +67,13 @@ export function Hero() {
               className="group relative px-8 py-4 border-4 border-white bg-transparent hover:bg-white hover:text-pink-600 text-white transition-all duration-300 uppercase tracking-widest font-black"
             >
               <span className="relative z-10">Contáctame</span>
+            </button>
+            
+            <button
+              onClick={() => window.open(merchUrl, '_blank', 'noopener,noreferrer')}
+              className="group relative px-8 py-4 bg-cyan-500 hover:bg-black transition-all duration-300 uppercase tracking-widest font-black text-white border-4 border-cyan-500 hover:border-black"
+            >
+              <span className="relative z-10">Tienda Oficial</span>
             </button>
           </div>
         </div>
