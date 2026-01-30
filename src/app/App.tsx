@@ -10,7 +10,7 @@ import { WhatsAppFloat } from '@/app/components/WhatsAppFloat';
 export default function App() {
   return (
     <div className="min-h-screen bg-black text-white">
-      <WhatsAppFloat />
+      {/* <WhatsAppFloat /> */}
       <Navigation />
       <Hero />
       <About />

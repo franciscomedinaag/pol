@@ -12,7 +12,7 @@ export function Contact() {
     { icon: Instagram, name: 'Instagram', handle: '@polgaynor', color: 'pink', url: 'https://www.instagram.com/polgaynor' },
     { icon: Facebook, name: 'Facebook', handle: 'Pöl Gaynor', color: 'blue', url: 'https://www.facebook.com/polgaynor' },
     { icon: Mail, name: 'Email', handle: 'polgaynor@gmail.com', color: 'pink', url: 'mailto:polgaynor@gmail.com' },
-    { icon: PhoneCallIcon, name: 'Teléfono', handle: '+52 1 612 158 7255', color: 'blue', url: 'tel:+5216121587255' },
+    // { icon: PhoneCallIcon, name: 'Teléfono', handle: '+52 1 612 158 7255', color: 'blue', url: 'tel:+5216121587255' },
   ];
 
   return (
