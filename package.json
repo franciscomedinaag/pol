@@ -2,11 +2,11 @@
   "name": "@figma/my-make-file",
   "private": true,
   "version": "0.0.1",
-  "homepage": "https://franciscomedinaag.github.io/pol",
+  "homepage": "https://polgaynor.com",
   "type": "module",
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d dist",
     "build": "vite build",
     "dev": "vite"
   },
