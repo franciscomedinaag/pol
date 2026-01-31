@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist -c polgaynor.com",
+    "deploy": "gh-pages -d dist --cname polgaynor.com",
     "build": "vite build",
     "dev": "vite"
   },
